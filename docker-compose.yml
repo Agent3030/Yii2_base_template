@@ -1,0 +1,40 @@
+data:
+   image: busybox:latest
+   ports:
+     - "2290:22"
+   volumes:
+     - .:/var/www/yii2_base_template
+   links:
+     - db
+   tty: true
+
+fpm:
+  build: docker/php
+  volumes_from:
+    - data
+#  volumes:
+#    - ./docker/php/:/usr/local/etc/php/
+  expose:
+    - 9000
+  links:
+    - db
+
+nginx:
+  image: nginx:latest
+  volumes_from:
+    - data
+  ports:
+    - "8090:80"
+  volumes:
+    - ./docker/nginx/:/etc/nginx/conf.d/
+  links:
+   - fpm
+
+db:
+  image: postgres:latest
+  ports:
+    - "54320:5432"
+  environment:
+    POSTGRES_DB: yii2_base_template
+    POSTGRES_PASSWORD: yii2_base_template
+    POSTGRES_USER: yii2_base_template
