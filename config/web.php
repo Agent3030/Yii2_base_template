@@ -9,7 +9,7 @@
 
 return [
     'id' => 'yii2-base-template',
-    'basePath' => realpath (_DIR_ . '/../'),
+    'basePath' => realpath (__DIR__ . '/../'),
     'components' => [
         'request' => [
             'cookieValidationKey' => 'your secret key here',
