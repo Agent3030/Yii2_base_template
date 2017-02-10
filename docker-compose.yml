@@ -31,10 +31,10 @@ nginx:
    - fpm
 
 db:
-  image: mysql:latest
-  ports:
-    - "33060:3306"
-  environment:
-    POSTGRES_DB: yii2_base_template
-    POSTGRES_PASSWORD: yii2_base_template
-    POSTGRES_USER: yii2_base_template
+    image: postgres:latest
+    ports:
+      - "54322:5432"
+    environment:
+      POSTGRES_DB: yii2_base_template
+      POSTGRES_PASSWORD: yii2_base_template
+      POSTGRES_USER: yii2_base_template
