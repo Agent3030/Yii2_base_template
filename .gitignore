@@ -18,7 +18,8 @@ Thumbs.db
 # runtime dir
 /runtime
 
-
+#env  file
+.env
 
 # composer itself is not needed
 composer.phar

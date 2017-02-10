@@ -1,5 +1,6 @@
 {
     "require": {
-        "yiisoft/yii2": "*"
+        "yiisoft/yii2": "*",
+        "vlucas/phpdotenv": "^2.0"
     }
 }
