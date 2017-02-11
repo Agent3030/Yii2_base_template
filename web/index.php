@@ -10,6 +10,9 @@ require(__DIR__ . '/../environment/env.php');
 //yii base module
 require (__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
 
+// Bootstrap application
+require(__DIR__ . '/../config/bootstrap.php');
+
 //yii app config
 require(__DIR__ . '/../config/web.php');
 
