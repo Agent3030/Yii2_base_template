@@ -3,7 +3,7 @@ data:
    ports:
      - "2290:22"
    volumes:
-     - .:/var/www/yii2_base_template
+     - .:/var/www/yii2-template
    links:
      - db
    tty: true

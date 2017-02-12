@@ -7,13 +7,20 @@
   * */
 $db_local = require(__DIR__ . '/db-local.php');
 $db_server = require(__DIR__ . '/db-server.php');
+$urlManager = require(__DIR__ . '/urlManager.php');
+$params = require(__DIR__ . '/params.php');
 
-return [
+
+
+$config = [
     'id' => 'basic',
     'name' => 'yii2_base_template',
     'layout' => "@app/modules/main/views/layouts/main.php",
     //'layout' => "@app/modules/main/views/layouts/main.twig",
     'basePath' => realpath (__DIR__ . '/../'),
+    'sourceLanguage'=>'en',
+    'language'=>'en',
+    'defaultRoute' => '',
     'modules' => [
         'user' => [
             'class' => 'app\modules\user\Module',
@@ -28,6 +35,7 @@ return [
     'components' => [
         'request' => [
             'cookieValidationKey' => env('APP_COOKIE_VALIDATION_KEY'),
+            'baseUrl' => ''
         ],
         'user' => [
             'class'=>'yii\web\User',
@@ -43,5 +51,45 @@ return [
         //uncomment when use on hosting
         //'db' => $db_server,
 
-    ]
+        'urlManager' => $urlManager,
+        'i18n' => [
+            'translations' => [
+
+                '*'=> [
+                    'class' => 'yii\i18n\DbMessageSource',
+                    'sourceMessageTable'=>'{{%source_message}}',
+                    'messageTable'=>'{{%message}}',
+                    // 'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
+                ],
+
+            ],
+        ],
+
+
+
+    ],
+    'as locale' => [
+        'class' => 'app\behaviors\LocaleBehavior',
+        'enablePreferredLanguage' => true
+    ],
+    'params' => $params,
 ];
+
+if (YII_DEBUG) {
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
+        'allowedIPs' => ['127.0.0.1', '::1', '192.168.33.1', '172.17.42.1', '172.17.0.1'],
+    ];
+}
+
+if (YII_ENV_DEV) {
+    $config['bootstrap'][] = 'gii';
+    $config['modules']['gii'] = [
+        'class' => 'yii\gii\Module',
+        'allowedIPs' => ['127.0.0.1', '::1', '192.168.33.1', '172.17.42.1', '172.17.0.1', '*'],
+    ];
+}
+
+return $config;
+
