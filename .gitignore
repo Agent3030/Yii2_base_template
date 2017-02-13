@@ -18,6 +18,9 @@ Thumbs.db
 # runtime dir
 /runtime
 
+# uploaded files
+/web/uploads
+
 #env  file
 .env
 

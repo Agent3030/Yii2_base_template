@@ -33,6 +33,7 @@ $config = [
         ]
     ],
     'components' => [
+
         'request' => [
             'cookieValidationKey' => env('APP_COOKIE_VALIDATION_KEY'),
             'baseUrl' => ''
@@ -64,13 +65,27 @@ $config = [
 
             ],
         ],
+        'fileStorage' => [
+            'class' => '\trntv\filekit\Storage',
+            'baseUrl' => '@web/uploads',
+            'filesystem' => [
+                'class' => 'app\components\filesystem\LocalFlysystemBuilder',
+                'path' => '@webroot/uploads'
+            ],
+            'as log' => [
+                'class' => 'app\behaviors\FileStorageLogBehavior',
+                'component' => 'fileStorage'
+            ]
+        ],
+        'glide' => [
+            'class' => 'trntv\glide\components\Glide',
+            'sourcePath' => '@web/uploads',
+            'cachePath' => '@runtime/glide',
+            'signKey' => env('GLIDE_SIGN_KEY')
+        ],
 
 
 
-    ],
-    'as locale' => [
-        'class' => 'app\behaviors\LocaleBehavior',
-        'enablePreferredLanguage' => true
     ],
     'params' => $params,
 ];

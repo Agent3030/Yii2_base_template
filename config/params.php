@@ -2,7 +2,7 @@
 
 return [
 
-    'shouldBeActivated' => 'true',
+    'shouldBeActivated' => false,
     'availableLocales'=>[
         'en-US'=>'English (US)',
         'ru-RU'=>'Русский (РФ)',

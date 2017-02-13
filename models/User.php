@@ -1,10 +1,10 @@
 <?php
 namespace app\models;
 
-use common\behaviors\AccessEulesBehavior;
-use common\behaviors\AccessRulesBehavior;
-use common\commands\AddToTimelineCommand;
-use common\models\query\UserQuery;
+//use common\behaviors\AccessEulesBehavior;
+//use common\behaviors\AccessRulesBehavior;
+//use common\commands\AddToTimelineCommand;
+use app\models\query\UserQuery;
 use Yii;
 use yii\behaviors\AttributeBehavior;
 use yii\behaviors\TimestampBehavior;
