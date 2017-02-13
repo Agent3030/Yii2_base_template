@@ -18,6 +18,8 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
+        $this->module->layoutPath = '@app/modules/admin/views/layouts';
+        $this->module->layout = 'admin';
 
         // custom initialization code goes here
     }

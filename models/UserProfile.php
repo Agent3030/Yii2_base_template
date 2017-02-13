@@ -35,7 +35,7 @@ class UserProfile extends ActiveRecord
     /**
      * @return array
      */
-   /* public function behaviors()
+   public function behaviors()
     {
         return [
             'picture' => [
@@ -45,7 +45,7 @@ class UserProfile extends ActiveRecord
                 'baseUrlAttribute' => 'avatar_base_url'
             ]
         ];
-    }*/
+    }
 
 
     /**
@@ -69,7 +69,7 @@ class UserProfile extends ActiveRecord
 
             ['locale', 'default', 'value' => Yii::$app->language],
             ['locale', 'in', 'range' => array_keys(Yii::$app->params['availableLocales'])],
-         //   ['picture', 'safe']
+            ['picture', 'safe']
         ];
     }
 

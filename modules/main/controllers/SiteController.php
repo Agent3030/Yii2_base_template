@@ -10,6 +10,20 @@ use yii\web\Controller;
  */
 class SiteController extends Controller
 {
+    public function actions()
+    {
+
+        return [
+            'set-locale'=>[
+                'class'=>'app\actions\SetLocaleAction',
+                'locales'=>array_keys(\Yii::$app->params['availableLocales'])
+            ],
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ]
+        ];
+    }
+
     /**
      * Renders the index view for the module
      * @return string
